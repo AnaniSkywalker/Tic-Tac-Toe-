@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
@@ -50,11 +52,11 @@ public class GameBoard extends JFrame implements ProjectInterface
 	//Top Menu Bars
 	private JMenu mainFile;
 	private JMenu helpBar;
-	private JMenu aboutMe;
-	private JMenu menuBar;
+	private JMenuItem aboutMe;
+	private JMenuBar menuBar;
 	private JMenu modeMenu;
-	private JMenu newMenu;
-	private JMenu exitGame;
+	private JMenuItem newMenu;
+	private JMenuItem exitGame;
 	
 	//Now, Let us worry about the constructor and the game's menu
 	public GameBoard()
@@ -68,9 +70,19 @@ public class GameBoard extends JFrame implements ProjectInterface
 		setVisible(true);
 	}
 
+	//Here, we are creating the menu list where we will store all the functionalities of the game
 	@Override
 	public void theMenuHandler() {
 		// TODO Auto-generated method stub
+		
+		//Here we will store the help option
+		//Also we are storing the game Mode
+		theFileMenuHandler();
+		theHelpMenuHandler();
+		gameDifficultyMenu();
+		
+		//Let us create and instance to hold the data for the menu bar
+	    menuBar = new JMenuBar();
 		
 	}
 
