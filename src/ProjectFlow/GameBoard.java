@@ -2,6 +2,8 @@ package ProjectFlow;
 
 import static java.lang.System.out;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +12,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+
+import com.sun.glass.events.KeyEvent;
 
 public class GameBoard extends JFrame implements ProjectInterface
 {
@@ -55,6 +59,7 @@ public class GameBoard extends JFrame implements ProjectInterface
 	private JMenuItem aboutMe;
 	private JMenuBar menuBar;
 	private JMenu modeMenu;
+	private JMenu developerInfo;
 	private JMenuItem newMenu;
 	private JMenuItem exitGame;
 	
@@ -81,15 +86,40 @@ public class GameBoard extends JFrame implements ProjectInterface
 		theHelpMenuHandler();
 		gameDifficultyMenu();
 		
+		//First Let us create The Menu bar for the window
+		setJMenuBar(menuBar);
+		
 		//Let us create and instance to hold the data for the menu bar
 	    menuBar = new JMenuBar();
+	    
+	    //Now, Let us use the menuBar to add some import stuff to the menu bar 
+	    menuBar.add(mainFile);
+	    menuBar.add(modeMenu);
+	    menuBar.add(helpBar);
+	    menuBar.add(developerInfo);
 		
 	}
 
 	@Override
 	public void theFileMenuHandler() {
 		// TODO Auto-generated method stub
+		//First Let us add some items to the menu that the user may utilize
+		mainFile.add(newMenu);
+		mainFile.add(exitGame);
 		
+		//Next, Let us create a new menu item
+		newMenu = new JMenuItem("New Game");
+		newMenu.setMnemonic(KeyEvent.VK_0);
+		newMenu.addActionListener(new NewButtonListener());
+		
+		//Now, let us create a new item to exit 
+		exitGame = new JMenuItem("Exit");
+		exitGame.setMnemonic(KeyEvent.VK_1);
+		exitGame.addActionListener(new ExitButtonListener());
+		
+		//So let us create a new File Menu for the JMenu
+		mainFile = new JMenu("Add File");
+		mainFile.setMnemonic(KeyEvent.VK_2);
 	}
 
 	@Override
