@@ -751,5 +751,12 @@ public class GameBoard extends JFrame implements ProjectInterface
             gameBoard[count] = 0;
         }
     }
+    
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		GameBoard gb = new GameBoard();
+
+	}
 
 }
